@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class UsersService {
+class UserService {
     static BASE_URL = 'http://localhost:1010'
 
     static async login(email, password) {
@@ -112,6 +112,25 @@ class UsersService {
     }
 
     static isAuthenticated(){
-        return localStorage.getItem('token') !== null
-    } 
+        const token = localStorage.getItem('token') 
+        return !!token
+    }
+
+    static isAdmin(){
+        const role = localStorage.getItem('role') 
+        return role === 'ADMIN'
+    }
+
+    static isUser(){
+        const role = localStorage.getItem('role') 
+        return role === 'USER'
+    }
+
+    static adminOnly(){
+       return this.isAuthenticated() && this.isAdmin();
+    }
+
+    
 }
+
+export default UserService;
