@@ -44,15 +44,15 @@ function CreateTaskPage() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Title:</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter task title" required />
                 </div>
                 <div className="form-group">
                     <label>Description:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} required />
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Enter task description" required />
                 </div>
                 <div className="form-group">
                     <label>Status:</label>
-                    <input type="text" name="city" value={formData.city} onChange={handleInputChange} placeholder="Enter your Status" required />
+                    <input type="text" name="city" value={formData.city} onChange={handleInputChange} placeholder="Enter task status" required />
                 </div>
                 <button type="submit">Create Tasks</button>
             </form>
