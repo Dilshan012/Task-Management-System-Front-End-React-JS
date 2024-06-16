@@ -1,23 +1,23 @@
-// components/UserManagementPage.js
+// components/TaskManagementPage.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import UserService from '../service/UserService';
+import TaskService from '../service/TaskService';
 
-function UserManagementPage() {
-  const [users, setUsers] = useState([]);
+function TaskManagementPage() {
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     // Fetch users data when the component mounts
-    fetchUsers();
+    fetchTasks();
   }, []);
 
-  const fetchUsers = async () => {
+  const fetchTasks = async () => {
     try {
 
       const token = localStorage.getItem('token'); // Retrieve the token from localStorage
-      const response = await UserService.getAllUsers(token);
+      const response = await UserService.getAllTasks(token);
       console.log(response);
-      setUsers(response.ourUsersList); // Assuming the list of users is under the key 'ourUsersList'
+      setTasks(response.ourUsersList); // Assuming the list of tasks is under the key 'ourUsersList'
     } catch (error) {
       console.error('Error fetching users:', error);
     }
@@ -74,4 +74,4 @@ function UserManagementPage() {
   );
 }
 
-export default UserManagementPage;
+export default TaskManagementPage;
