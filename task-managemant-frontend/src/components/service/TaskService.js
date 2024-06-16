@@ -1,11 +1,11 @@
 import axios from "axios";
 
-class UserService{
+class TaskService{
     static BASE_URL = "http://localhost:1010"
 
     static async showTasks(email, password){
         try{
-            const response = await axios.post(`${UserService.BASE_URL}/auth/show-tasks`, {email, password})
+            const response = await axios.post(`${TaskService.BASE_URL}/auth/show-tasks`, {email, password})
             return response.data;
 
         }catch(err){
@@ -13,9 +13,9 @@ class UserService{
         }
     }
 
-    static async createTasks(userData, token){
+    static async createtasks(taskData, token){
         try{
-            const response = await axios.post(`${UserService.BASE_URL}/auth/create-tasks`, userData, 
+            const response = await axios.post(`${TaskService.BASE_URL}/auth/createtasks`, taskData, 
             {
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -27,7 +27,7 @@ class UserService{
 
     static async getAllTasks(token){
         try{
-            const response = await axios.get(`${UserService.BASE_URL}/admin/get-all-tasks`, 
+            const response = await axios.get(`${TaskService.BASE_URL}/admin/get-all-tasks`, 
             {
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -38,9 +38,9 @@ class UserService{
     }
 
 
-    static async getYourProfile(token){
+    static async getTaskById(taskId, token){
         try{
-            const response = await axios.get(`${UserService.BASE_URL}/adminuser/get-profile`, 
+            const response = await axios.get(`${TaskService.BASE_URL}/admin/get-tasks/${taskId}`, 
             {
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -50,9 +50,9 @@ class UserService{
         }
     }
 
-    static async getUserById(userId, token){
+    static async deleteTask(taskId, token){
         try{
-            const response = await axios.get(`${UserService.BASE_URL}/admin/get-users/${userId}`, 
+            const response = await axios.delete(`${TaskService.BASE_URL}/admin/delete/${taskId}`, 
             {
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -62,9 +62,10 @@ class UserService{
         }
     }
 
-    static async deleteUser(userId, token){
+
+    static async updateTask(taskId, taskData, token){
         try{
-            const response = await axios.delete(`${UserService.BASE_URL}/admin/delete/${userId}`, 
+            const response = await axios.put(`${TaskService.BASE_URL}/admin/update/${taskId}`, taskData,
             {
                 headers: {Authorization: `Bearer ${token}`}
             })
@@ -72,46 +73,8 @@ class UserService{
         }catch(err){
             throw err;
         }
-    }
-
-
-    static async updateUser(userId, userData, token){
-        try{
-            const response = await axios.put(`${UserService.BASE_URL}/admin/update/${userId}`, userData,
-            {
-                headers: {Authorization: `Bearer ${token}`}
-            })
-            return response.data;
-        }catch(err){
-            throw err;
-        }
-    }
-
-    /**AUTHENTICATION CHECKER */
-    static logout(){
-        localStorage.removeItem('token')
-        localStorage.removeItem('role')
-    }
-
-    static isAuthenticated(){
-        const token = localStorage.getItem('token')
-        return !!token
-    }
-
-    static isAdmin(){
-        const role = localStorage.getItem('role')
-        return role === 'ADMIN'
-    }
-
-    static isUser(){
-        const role = localStorage.getItem('role')
-        return role === 'USER'
-    }
-
-    static adminOnly(){
-        return this.isAuthenticated() && this.isAdmin();
     }
 
 }
 
-export default UserService;
+export default TaskService;

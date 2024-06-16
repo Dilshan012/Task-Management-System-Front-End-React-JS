@@ -6,8 +6,6 @@ function Navbar() {
     const isAuthenticated = UserService.isAuthenticated();
     const isAdmin = UserService.isAdmin();
 
-
-
     const handleLogout = () => {
         const confirmDelete = window.confirm('Are you sure you want to logout this user?');
         if (confirmDelete) {
