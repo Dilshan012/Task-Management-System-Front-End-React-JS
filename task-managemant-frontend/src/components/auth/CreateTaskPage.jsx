@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import TaskService from '../service/TaskService';
 import { useNavigate } from 'react-router-dom';
-import TaskService from '../service/TaskService';
 
 function CreateTaskPage() {
     const navigate = useNavigate();
@@ -41,7 +40,7 @@ function CreateTaskPage() {
 
     return (
         <div className="auth-container">
-            <h2>CreateTasks</h2>
+            <h2>Create a Task</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Title:</label>

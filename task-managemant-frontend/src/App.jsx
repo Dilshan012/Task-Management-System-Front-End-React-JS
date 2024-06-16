@@ -9,7 +9,7 @@ import UpdateUser from './components/userspage/UpdateUser';
 import UserManagementPage from './components/userspage/UserManagementPage';
 import ProfilePage from './components/userspage/ProfilePage';
 import TaskManagementPage from './components/tasks/TaskManagementPage';
-//import CreateTaskPage from './components/auth/CreateTaskPage';
+import CreateTaskPage from './components/auth/CreateTaskPage';
 
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
             <Route exact path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route exact path="/task-management" element={<TaskManagementPage />} />
+            <Route exact path="/createtasks" element={<CreateTaskPage />} />
 
             
 

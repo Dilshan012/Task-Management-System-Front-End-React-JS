@@ -43,7 +43,7 @@ function TaskManagementPage() {
   return (
     <div className="user-management-container">
       <h2>Tasks Management Page</h2>
-      <button className='reg-button'> <Link to="/createtasks">Add Tasks</Link></button>
+      <button className='reg-button'> <Link to="/createtasks">Create Tasks</Link></button>
       <table>
         <thead>
           <tr>
@@ -58,11 +58,12 @@ function TaskManagementPage() {
             <tr key={task.id}>
               <td>{task.id}</td>
               <td>{task.title}</td>
-              <td>{task.description}</td> {/* Added here */}
+              <td>{task.description}</td>
               <td>{task.status}</td>
               <td>
                 <button className='delete-button' onClick={() => deleteTask(task.id)}>Delete</button>
-                <button><Link to={`/update-task/${task.id}`}>Update</Link></button>
+                <button><Link to={`/update-task/${task.id}`}>Update</Link>
+                </button>
               </td>
             </tr>
           ))}
