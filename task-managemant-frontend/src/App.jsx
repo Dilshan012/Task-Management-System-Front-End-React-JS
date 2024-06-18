@@ -8,7 +8,8 @@ import UserService from './components/service/UserService';
 import UpdateUser from './components/userspage/UpdateUser';
 import UserManagementPage from './components/userspage/UserManagementPage';
 import ProfilePage from './components/userspage/ProfilePage';
-//import TasksPage from './components/tasks/TasksPage';
+import TaskManagementPage from './components/tasks/TaskManagementPage';
+import CreateTaskPage from './components/auth/CreateTaskPage';
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             <Route exact path="/" element={<LoginPage />} />
             <Route exact path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route exact path="/task-management" element={<TaskManagementPage />} />
+            <Route exact path="/createtasks" element={<CreateTaskPage />} />
+
             
 
             {/* Check if user is authenticated and admin before rendering admin-only routes */}
